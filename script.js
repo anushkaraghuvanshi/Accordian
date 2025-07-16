@@ -1,12 +1,15 @@
-const containers = document.querySelectorAll('.cont')
+const headings = document.querySelectorAll('.heading');
 
+headings.forEach(function (heading) {
+  heading.addEventListener('click', function () {
+    const content = this.nextElementSibling;
 
-containers.forEach(cont =>{
-    const content = cont.querySelector('p')
-    const heading = cont.querySelector('h4')
+    this.classList.toggle('active');
 
-    heading.addEventListener('click',function(){
-    content.classList.toggle('hidden')
-})
-})
-
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
